@@ -1,0 +1,56 @@
+@using AuthTest.User
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using System.Security.Claims
+
+
+<EditForm Model="model"  OnValidSubmit="SubmitLogin" FormName="LoginForm" >
+
+    <InputText @bind-Value="model.userEmail" placeholder="البريد الالكتروني" />
+    <InputText @bind-Value="model.userPassword" placeholder="كلمة المرور" type="password" />
+
+    <button type="submit">Login</button>
+</EditForm>
+
+@code {
+    [Inject] HttpClient client { get; set; }
+    [CascadingParameter] private HttpContext HttpContext { get; set; } 
+    [Inject] NavigationManager _navigationManager { get; set; }
+
+
+    [SupplyParameterFromForm] public LoginInfoModel model { get; set; } = new();
+ 
+    
+    private async Task SubmitLogin()
+    {
+        Dictionary<string, string> userInfo = new Dictionary<string, string>()
+        {
+            {"userName",model.userEmail},
+            {"userPassword",model.userPassword}
+        };
+        var userContent = new FormUrlEncodedContent(userInfo);
+        
+       var response=await client.PostAsync(_navigationManager.BaseUri + "api/login", userContent);
+
+       if (response.IsSuccessStatusCode)
+       {
+           if (response.Content is not null)
+           {
+               var result =await response.Content.ReadFromJsonAsync<LoginResult>();
+               if (result is not null)
+               {
+                   if (result.isSuccess)
+                   {
+                       var identity = new ClaimsIdentity
+                           (result.GetClaimsList(),CookieAuthenticationDefaults.AuthenticationScheme);
+                       var principal = new ClaimsPrincipal(identity);
+
+                       await HttpContext.SignInAsync
+                           (CookieAuthenticationDefaults.AuthenticationScheme,principal);
+                       _navigationManager.NavigateTo("/");
+                   }
+               }
+           }
+       }
+    }
+}

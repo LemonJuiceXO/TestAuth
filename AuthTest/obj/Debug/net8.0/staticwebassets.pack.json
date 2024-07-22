@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/bunny/RiderProjects/AuthTest/AuthTest/obj/Debug/net8.0/scopedcss/projectbundle/AuthTest.bundle.scp.css",
+      "PackagePath": "staticwebassets/AuthTest.bundle.scp.css"
+    },
+    {
+      "Id": "/Users/bunny/RiderProjects/AuthTest/AuthTest/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
+    },
+    {
+      "Id": "/Users/bunny/RiderProjects/AuthTest/AuthTest/wwwroot/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/bunny/RiderProjects/AuthTest/AuthTest/wwwroot/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/bunny/RiderProjects/AuthTest/AuthTest/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.AuthTest.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.AuthTest.props",
+      "PackagePath": "build\\AuthTest.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.AuthTest.props",
+      "PackagePath": "buildMultiTargeting\\AuthTest.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.AuthTest.props",
+      "PackagePath": "buildTransitive\\AuthTest.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
